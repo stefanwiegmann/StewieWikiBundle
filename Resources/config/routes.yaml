@@ -1,0 +1,8 @@
+stefanwiegmann_skeleton:
+    resource: "@StefanwiegmannSkeletonBundle/Controller/"
+    type:     annotation
+    # prefix:   "{_locale}/"
+    # defaults:
+    #   _locale: en
+    # requirements:
+    #   _locale: en|de
