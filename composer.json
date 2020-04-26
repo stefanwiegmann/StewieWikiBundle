@@ -1,13 +1,13 @@
 {
-    "name": "stefanwiegmann/skeletonbundle",
+    "name": "stefanwiegmann/wikibundle",
     "type": "symfony-bundle",
-    "description": "A skeleton bundle for Symfony5 bundle development",
+    "description": "A wiki bundle for Symfony5",
     "authors" : [{
         "name" : "Stefan Wiegmann",
         "email" : "mail@stefanwiegmann.de"
     }],
     "keywords" : [
-        "user bundle symfony symfony5"
+        "wiki bundle symfony symfony5"
     ],
     "license" : [
         "MIT"
@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Stefanwiegmann\\SkeletonBundle\\": ""
+            "Stefanwiegmann\\WikiBundle\\": ""
         }
     },
     "extra" : {
