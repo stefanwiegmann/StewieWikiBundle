@@ -1,5 +1,5 @@
 {
-    "name": "stefanwiegmann/wikibundle",
+    "name": "stefanwiegmann/wiki-bundle",
     "type": "symfony-bundle",
     "description": "A wiki bundle for Symfony5",
     "authors" : [{
