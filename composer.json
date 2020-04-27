@@ -1,5 +1,5 @@
 {
-    "name": "stefanwiegmann/wiki-bundle",
+    "name": "stewie/wiki-bundle",
     "type": "symfony-bundle",
     "description": "A wiki bundle for Symfony5",
     "authors" : [{
@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Stefanwiegmann\\WikiBundle\\": ""
+            "Stewie\\WikiBundle\\": ""
         }
     },
     "extra" : {

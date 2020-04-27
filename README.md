@@ -6,7 +6,7 @@
 ```php
 // config/bundles.php
     // ...
-    Stefanwiegmann\WikiBundle\StefanwiegmannSkeletonBundle::class => ['all' => true],
+    Stewie\WikiBundle\StefanwiegmannSkeletonBundle::class => ['all' => true],
 ```
 
 ```php
@@ -26,13 +26,13 @@
 // config/services.yaml
     // ...
         # same for classes from /lib
-        Stefanwiegmann\WikiBundle\:
+        Stewie\WikiBundle\:
             resource: '../lib/stefanwiegmann/skeleton-bundle/*'
             exclude: '../lib/stefanwiegmann/skeleton-bundle/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
         # controllers are imported separately to make sure services can be injected
         # as action arguments even if you don't extend any base controller class
-        Stefanwiegmann\WikiBundle\Controller\:
+        Stewie\WikiBundle\Controller\:
             resource: '../lib/stefanwiegmann/skeleton-bundle/Controller'
             tags: ['controller.service_arguments']
 
