@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DefaultController extends AbstractController
 {
     /**
-    * @Route("/wiki", name="stewie_wiki_home")
+    * @Route("/home", name="stewie_wiki_home")
+    * @Route("/", name="stewie_wiki_index")
     */
     public function home()
     {

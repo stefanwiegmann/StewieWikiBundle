@@ -1,7 +1,7 @@
 stewie_wiki:
     resource: "@StewieWikiBundle/Controller/"
     type:     annotation
-    prefix:   "{_locale}/"
+    prefix:   "{_locale}/wiki/"
     defaults:
       _locale: en
     requirements:
