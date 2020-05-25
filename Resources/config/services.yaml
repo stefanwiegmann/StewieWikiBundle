@@ -1,0 +1,7 @@
+###> stewie/wiki-bundle ###
+    Stewie\WikiBundle\:
+        resource: '@StewieWikiBundle/*/*'
+        exclude: '@StewieWikiBundle/{Entity}'
+        tags: ['controller.service_arguments']
+        autowire: true
+###< stewie/wiki-bundle ###

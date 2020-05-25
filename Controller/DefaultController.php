@@ -9,11 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DefaultController extends AbstractController
 {
     /**
-    * @Route("/wiki", name="stefanwiegmann_wiki_home")
+    * @Route("/wiki", name="stewie_wiki_home")
     */
     public function home()
     {
-      return $this->render('@StefanwiegmannWiki/default/index.html.twig', [
+      return $this->render('@StewieWiki/default/index.html.twig', [
           'headline' => 'wiki headline',
           'content' => 'wiki content',
       ]);
