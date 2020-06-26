@@ -6,7 +6,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+// use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use Stewie\UserBundle\Service\PathFinder;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
 
@@ -15,12 +17,14 @@ class WipeDataCommand extends Command
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'stewie:wiki:wipe-data';
 
-    private $container;
+    private $em;
+    private $pathFinder;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(EntityManagerInterface $em, PathFinder $pathFinder)
     {
         parent::__construct();
-        $this->container = $container;
+        $this->em = $em;
+        $this->pathFinder = $pathFinder;
     }
 
     protected function configure()
@@ -40,11 +44,9 @@ class WipeDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      $em = $this->container->get('doctrine')->getManager();
-
       // wipe articles
       $output->writeln('Wiping articles:');
-      $repo = $em->getRepository('StewieWikiBundle:Article');
+      $repo = $this->em->getRepository('StewieWikiBundle:Article');
       $articles = $repo->findAll();
 
       $progressBar = new ProgressBar($output, count($articles));
@@ -52,13 +54,31 @@ class WipeDataCommand extends Command
 
       foreach ($articles as &$item){
 
-        $em->remove($item);
+        $this->em->remove($item);
         $progressBar->advance();
         }
 
-      $em->flush();
+      $this->em->flush();
       $progressBar->finish();
       $output->writeln('');
+
+        // wipe logs
+        $output->writeln('Wiping logs:');
+        $repo = $this->em->getRepository('StewieWikiBundle:ArticleLogEntry');
+        $logs = $repo->findAll();
+
+        $progressBar = new ProgressBar($output, count($logs));
+        $progressBar->start();
+
+        foreach ($logs as &$item){
+
+          $this->em->remove($item);
+          $progressBar->advance();
+          }
+
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
 
       // end of script
       $output->writeln('All data wiped!');

@@ -14,15 +14,15 @@
     ],
     "require": {
         "php": "^7.2.5",
-        "symfony/console": "5.0.*",
-        "symfony/dotenv": "5.0.*",
+        "symfony/console": "5.1.*",
+        "symfony/dotenv": "5.1.*",
         "symfony/flex": "^1.3.1",
-        "symfony/framework-bundle": "5.0.*",
-        "symfony/mailer": "5.0.*",
-        "symfony/security-bundle": "5.0.*",
-        "symfony/translation": "5.0.*",
+        "symfony/framework-bundle": "5.1.*",
+        "symfony/mailer": "5.1.*",
+        "symfony/security-bundle": "5.1.*",
+        "symfony/translation": "5.1.*",
         "symfony/twig-pack": "*",
-        "symfony/yaml": "5.0.*",
+        "symfony/yaml": "5.1.*",
         "stewie/user-bundle": "^1.0"
     },
     "autoload": {

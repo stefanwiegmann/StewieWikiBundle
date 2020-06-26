@@ -6,7 +6,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Stewie\WikiBundle\Entity\Article;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+// use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use Stewie\WikiBundle\Service\PathFinder;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
 
@@ -15,12 +17,14 @@ class FillArticleCommand extends Command
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'stewie:wiki:fill-articles';
 
-    private $container;
+    private $em;
+    private $pathFinder;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(EntityManagerInterface $em, PathFinder $pathFinder)
     {
         parent::__construct();
-        $this->container = $container;
+        $this->em = $em;
+        $this->pathFinder = $pathFinder;
     }
 
     protected function configure()
@@ -40,10 +44,10 @@ class FillArticleCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Article');
+      // $em = $this->container->get('doctrine')->getManager();
+      $repo = $this->em->getRepository('StewieWikiBundle:Article');
 
-      $contents = file_get_contents($this->container->get('kernel')->locateResource('@StewieWikiBundle/Resources/data')."/article.json");
+      $contents = file_get_contents($this->pathFinder->getBundlePath().'Resources/data/article.json');
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 
@@ -79,8 +83,8 @@ class FillArticleCommand extends Command
             $article->setTitle($item['title']);
             $article->setBody($item['body']);
 
-            $em->persist($article);
-            $em->flush();
+            $this->em->persist($article);
+            $this->em->flush();
 
             $progressBar->advance();
           }
