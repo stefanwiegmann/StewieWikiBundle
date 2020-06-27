@@ -5,17 +5,17 @@ namespace Stewie\WikiBundle\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Stewie\WikiBundle\Entity\Article;
+use Stewie\WikiBundle\Entity\Space;
 // use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Stewie\WikiBundle\Service\PathFinder;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Helper\ProgressBar;
 
-class FillArticleCommand extends Command
+class FillSpaceCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'stewie:wiki:fill-articles';
+    protected static $defaultName = 'stewie:wiki:fill-spaces';
 
     private $em;
     private $pathFinder;
@@ -31,11 +31,11 @@ class FillArticleCommand extends Command
     {
       $this
           // the short description shown while running "php bin/console list"
-          ->setDescription('Creates a dummy set of articles.')
+          ->setDescription('Creates a dummy set of spaces.')
 
           // the full command description shown when running the command with
           // the "--help" option
-          ->setHelp('This command allows you to create articles ...')
+          ->setHelp('This command allows you to create spaces ...')
 
           // add all or only static groups
           ->addOption('all')
@@ -45,10 +45,9 @@ class FillArticleCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
       // $em = $this->container->get('doctrine')->getManager();
-      $repo = $this->em->getRepository('StewieWikiBundle:Article');
-      $spaceRepo = $this->em->getRepository('StewieWikiBundle:Space');
+      $repo = $this->em->getRepository('StewieWikiBundle:Space');
 
-      $contents = file_get_contents($this->pathFinder->getBundlePath().'Resources/data/article.json');
+      $contents = file_get_contents($this->pathFinder->getBundlePath().'Resources/data/space.json');
       $contents = utf8_encode($contents);
       $results = json_decode($contents, true);
 
@@ -64,28 +63,27 @@ class FillArticleCommand extends Command
       }
 
       $progressBar = new ProgressBar($output, $i);
-      $output->writeln('Fill articles:');
+      $output->writeln('Fill spaces:');
       $progressBar->start();
 
       foreach ($results as &$item){
 
         if($item['essential'] || $input->getOption('all')){
 
-          $article = $repo->findOneByTitle($item['title']);
+          $space = $repo->findOneByName($item['name']);
 
-            if(!$article){
-                $article = new Article;
+            if(!$space){
+                $space = new Space;
             }else{
-                // foreach ($article->getGroupRoles() as &$role){
-                //   $article->removeGroupRole($role);
+                // foreach ($space->getGroupRoles() as &$role){
+                //   $space->removeGroupRole($role);
                 // }
             }
 
-            $article->setTitle($item['title']);
-            $article->setBody($item['body']);
-            $article->setSpace($spaceRepo->findOneByName($item['space']));
+            $space->setName($item['name']);
+            $space->setDescription($item['description']);
 
-            $this->em->persist($article);
+            $this->em->persist($space);
             $this->em->flush();
 
             $progressBar->advance();

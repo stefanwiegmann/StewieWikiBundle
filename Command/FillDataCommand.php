@@ -15,24 +15,26 @@ class FillDataCommand extends Command
 
     protected function configure()
     {
-      $this
-          // the short description shown while running "php bin/console list"
-          ->setDescription('Fills all data for WikiBundle.')
+        $this
+            // the short description shown while running "php bin/console list"
+            ->setDescription('Fills all data for WikiBundle.')
 
-          // the full command description shown when running the command with
-          // the "--help" option
-          ->setHelp('This command allows you to create articles')
+            // the full command description shown when running the command with
+            // the "--help" option
+            ->setHelp('This command allows you to create articles')
 
-          // add all or only static groups
-          ->addOption('all')
-      ;
+            // add all or only static groups
+            ->addOption('all')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      $articleCommand = $this->getApplication()->find('stewie:wiki:fill-articles');
+        $commands = array();
+        array_push($commands, 'stewie:wiki:fill-spaces');
+        array_push($commands, 'stewie:wiki:fill-articles');
 
-      if($input->getOption('all')){
+        if($input->getOption('all')){
 
             $arguments = [
                 '--all'  => true,
@@ -40,20 +42,24 @@ class FillDataCommand extends Command
 
             $outputText = 'All data filled!';
 
-    }else{
+        }else{
 
-          $arguments = [
-              '--all'  => false,
-          ];
+            $arguments = [
+                '--all'  => false,
+            ];
 
-          $outputText = 'Essential data filled!';
-    }
+            $outputText = 'Essential data filled!';
+        }
 
-      $commandInput = new ArrayInput($arguments);
+        $commandInput = new ArrayInput($arguments);
 
-      $returnCode = $articleCommand->run($commandInput, $output);
-      $output->writeln('All data filled!');
+        // run all commands
+        foreach ($commands as &$command) {
+            $runCommand = $this->getApplication()->find($command);
+            $returnCode = $runCommand->run($commandInput, $output);
+        }
+        $output->writeln($outputText);
 
-      return 1;
+        return 1;
     }
 }

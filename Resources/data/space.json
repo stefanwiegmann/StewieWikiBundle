@@ -1,0 +1,12 @@
+{
+    "1": {
+        "name": "Dummy Space",
+        "description": "A dummy space to add some dummy articles",
+        "essential": false
+    },
+    "2": {
+        "name": "Dummy Movies",
+        "description": "A dummy movie space to add some dummy movie articles",
+        "essential": false
+    }
+ }

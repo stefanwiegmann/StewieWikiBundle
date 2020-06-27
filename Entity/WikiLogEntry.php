@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Loggable\Entity\MappedSuperclass\AbstractLogEntry as LogEntry;
 
 /**
- * Stewie\ArticleBundle\Entity\ArticleLogEntry
+ * Stewie\ArticleBundle\Entity\WikiLogEntry
  *
  * @ORM\Table(
- *     name="stewie_wiki_article_log_entries",
+ *     name="stewie_wiki_log_entries",
  *     options={"row_format":"DYNAMIC"},
  *  indexes={
  *      @ORM\Index(name="log_class_lookup_idx", columns={"object_class"}),
@@ -20,7 +20,7 @@ use Gedmo\Loggable\Entity\MappedSuperclass\AbstractLogEntry as LogEntry;
  * )
  * @ORM\Entity(repositoryClass="Gedmo\Loggable\Entity\Repository\LogEntryRepository")
  */
-class ArticleLogEntry extends LogEntry
+class WikiLogEntry extends LogEntry
 {
     /**
      * All required columns are mapped through inherited superclass

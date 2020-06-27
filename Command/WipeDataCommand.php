@@ -29,52 +29,70 @@ class WipeDataCommand extends Command
 
     protected function configure()
     {
-      $this
-          // the short description shown while running "php bin/console list"
-          ->setDescription('Wipes all data for WikiBundle.')
+        $this
+            // the short description shown while running "php bin/console list"
+            ->setDescription('Wipes all data for WikiBundle.')
 
-          // the full command description shown when running the command with
-          // the "--help" option
-          ->setHelp('This command allows you to wipe articles')
+            // the full command description shown when running the command with
+            // the "--help" option
+            ->setHelp('This command allows you to wipe articles')
 
-          // add all or only static groups
-          ->addOption('all')
-      ;
+            // add all or only static groups
+            ->addOption('all')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-      // wipe articles
-      $output->writeln('Wiping articles:');
-      $repo = $this->em->getRepository('StewieWikiBundle:Article');
-      $articles = $repo->findAll();
+        // wipe spaces
+        $output->writeln('Wiping spaces:');
+        $repo = $this->em->getRepository('StewieWikiBundle:Space');
+        $objects = $repo->findAll();
 
-      $progressBar = new ProgressBar($output, count($articles));
-      $progressBar->start();
+        $progressBar = new ProgressBar($output, count($objects));
+        $progressBar->start();
 
-      foreach ($articles as &$item){
+        foreach ($objects as &$item){
 
-        $this->em->remove($item);
-        $progressBar->advance();
+            $this->em->remove($item);
+            $progressBar->advance();
         }
 
-      $this->em->flush();
-      $progressBar->finish();
-      $output->writeln('');
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
+
+        // wipe articles
+        $output->writeln('Wiping articles:');
+        $repo = $this->em->getRepository('StewieWikiBundle:Article');
+        $objects = $repo->findAll();
+
+        $progressBar = new ProgressBar($output, count($objects));
+        $progressBar->start();
+
+        foreach ($objects as &$item){
+
+            $this->em->remove($item);
+            $progressBar->advance();
+        }
+
+        $this->em->flush();
+        $progressBar->finish();
+        $output->writeln('');
 
         // wipe logs
         $output->writeln('Wiping logs:');
-        $repo = $this->em->getRepository('StewieWikiBundle:ArticleLogEntry');
-        $logs = $repo->findAll();
+        $repo = $this->em->getRepository('StewieWikiBundle:WikiLogEntry');
+        $objects = $repo->findAll();
 
-        $progressBar = new ProgressBar($output, count($logs));
+        $progressBar = new ProgressBar($output, count($objects));
         $progressBar->start();
 
-        foreach ($logs as &$item){
+        foreach ($objects as &$item){
 
-          $this->em->remove($item);
-          $progressBar->advance();
-          }
+            $this->em->remove($item);
+            $progressBar->advance();
+        }
 
         $this->em->flush();
         $progressBar->finish();

@@ -12,13 +12,13 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="Stewie\WikiBundle\Repository\ArticleRepository")
- * @ORM\Table(name="stewie_wiki_article")
+ * @ORM\Entity(repositoryClass="Stewie\WikiBundle\Repository\SpaceRepository")
+ * @ORM\Table(name="stewie_wiki_space")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\Loggable(logEntryClass="Stewie\WikiBundle\Entity\WikiLogEntry")
  * @Vich\Uploadable
  */
-class Article
+class Space
 {
     /**
      * @ORM\Id()
@@ -31,29 +31,19 @@ class Article
      * @Gedmo\Versioned
      * @ORM\Column(type="string", length=180, unique=false)
      */
-    private $title;
+    private $name;
 
     /**
      * @Gedmo\Versioned
      * @ORM\Column(type="text")
      */
-    private $body;
+    private $description;
 
     /**
-     * @Gedmo\Slug(fields={"title"})
+     * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="wiki_article")
-     */
-    private $author;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Stewie\WikiBundle\Entity\Space", inversedBy="article")
-     */
-    private $space;
 
     /**
      * @var \DateTime $created
@@ -71,10 +61,16 @@ class Article
      */
     private $updated;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Stewie\WikiBundle\Entity\Article", mappedBy="space")
+     */
+    private $article;
+
     public function __construct()
     {
         // $this->roles = new ArrayCollection();
 
+        $this->article = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,14 +78,26 @@ class Article
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
@@ -130,39 +138,35 @@ class Article
         return $this;
     }
 
-    public function getAuthor(): ?User
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticle(): Collection
     {
-        return $this->author;
+        return $this->article;
     }
 
-    public function setAuthor(?User $author): self
+    public function addArticle(Article $article): self
     {
-        $this->author = $author;
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
+            $article->setSpace($this);
+        }
 
         return $this;
     }
 
-    public function getBody(): ?string
+    public function removeArticle(Article $article): self
     {
-        return $this->body;
-    }
-
-    public function setBody(string $body): self
-    {
-        $this->body = $body;
+        if ($this->article->contains($article)) {
+            $this->article->removeElement($article);
+            // set the owning side to null (unless already changed)
+            if ($article->getSpace() === $this) {
+                $article->setSpace(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getSpace(): ?Space
-    {
-        return $this->space;
-    }
-
-    public function setSpace(?Space $space): self
-    {
-        $this->space = $space;
-
-        return $this;
-    }
 }
