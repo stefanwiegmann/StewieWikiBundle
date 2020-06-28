@@ -1,0 +1,57 @@
+{% extends '@StewieWiki/default/layout.html.twig' %}
+{% trans_default_domain 'StewieWikiBundle' %}
+
+{% block filterTitle %}{{ 'header.filter'|trans }}{% endblock filterTitle %}
+
+{% block filterContent %}
+{#{ form_start(filterForm) }#}
+{#{ form_row(filterForm.userRole) }#}
+{#{ form_end(filterForm) }#}
+{% endblock filterContent %}
+
+{% block pageTitle %}{{ 'header.space.list'|trans }}{% endblock pageTitle %}
+
+{% block pageMenu %}
+    {% if is_granted('ROLE_USER_GROUP_CREATE') %}
+        <a href="{{ path('stewie_user_group_create') }}" class="btn btn-primary" role="button">{{ 'label.space.create'|trans }}</a>
+    {% endif %}
+{% endblock pageMenu %}
+
+{% block content %}
+    <!-- actual table -->
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(spaceList, '#', 's.id') }}</th>
+                <th>{{ knp_pagination_sortable(spaceList, 'label.name'|trans, 's.name') }}
+                    {% if spaceList.isSorted('s.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+                </th>
+                <th>{{ 'label.pages'|trans }}</th>
+                <th>{{ 'label.status'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+            </tr>
+        </thead>
+
+        {% for item in spaceList %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_user_group_view_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+                    {% if is_granted('ROLE_USER_GROUP_EDIT') %}
+                        <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_user_group_edit_detail', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
+                        <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('stewie_user_group_delete', {'slug': item.slug}) }}"><i class="fas fa-trash"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    {# display navigation #}
+    {{ knp_pagination_render(spaceList) }}
+
+{% endblock content %}

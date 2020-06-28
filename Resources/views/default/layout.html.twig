@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+{% trans_default_domain 'StewieWikiBundle' %}
+
+{% block menuTitle %}{{ 'header.menu'|trans }}{% endblock menuTitle %}
+
+{% block menuContent %}
+<li class="nav-item {% if app.request.attributes.get('_route') == 'stewie_user_list' %} active{% endif %}">
+  <a class="nav-link" href="{{ path('stewie_user_list') }}">page 1</a></li>
+{% endblock menuContent %}

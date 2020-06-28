@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="StewieWikiBundle.en">
+    <unit id="M87R1QC" name="header.menu">
+      <segment>
+        <source>header.menu</source>
+        <target>Pages</target>
+      </segment>
+    </unit>
+    <unit id="L1HBUvV" name="header.filter">
+      <segment>
+        <source>header.filter</source>
+        <target>header.filter</target>
+      </segment>
+    </unit>
+    <unit id="Ho6Ydeo" name="header.space.list">
+      <segment>
+        <source>header.space.list</source>
+        <target>header.space.list</target>
+      </segment>
+    </unit>
+    <unit id="Vx7DBGW" name="label.space.create">
+      <segment>
+        <source>label.space.create</source>
+        <target>label.space.create</target>
+      </segment>
+    </unit>
+    <unit id="ysOvPSq" name="label.name">
+      <segment>
+        <source>label.name</source>
+        <target>label.name</target>
+      </segment>
+    </unit>
+    <unit id="sIs8MuV" name="label.pages">
+      <segment>
+        <source>label.pages</source>
+        <target>Pages</target>
+      </segment>
+    </unit>
+    <unit id="hzhzbqw" name="label.status">
+      <segment>
+        <source>label.status</source>
+        <target>label.status</target>
+      </segment>
+    </unit>
+    <unit id="zldXQq6" name="label.actions">
+      <segment>
+        <source>label.actions</source>
+        <target>label.actions</target>
+      </segment>
+    </unit>
+    <unit id="cLu0gUR" name="tooltip.view">
+      <segment>
+        <source>tooltip.view</source>
+        <target>tooltip.view</target>
+      </segment>
+    </unit>
+    <unit id="nbcWSI3" name="tooltip.edit">
+      <segment>
+        <source>tooltip.edit</source>
+        <target>tooltip.edit</target>
+      </segment>
+    </unit>
+    <unit id="qWc975i" name="tooltip.delete">
+      <segment>
+        <source>tooltip.delete</source>
+        <target>tooltip.delete</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
