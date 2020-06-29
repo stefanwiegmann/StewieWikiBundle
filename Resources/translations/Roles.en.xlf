@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="Roles.en">
+    <unit id="Ebqs8cd" name="name.role_wiki_space_edit">
+      <segment>
+        <source>name.role_wiki_space_edit</source>
+        <target>Edit Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="2ZsEsRC" name="name.role_wiki_space_view">
+      <segment>
+        <source>name.role_wiki_space_view</source>
+        <target>View Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="5dEFLc7" name="name.role_wiki_space_create">
+      <segment>
+        <source>name.role_wiki_space_create</source>
+        <target>Create Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="Aa1xPZw" name="name.role_wiki_space_delete">
+      <segment>
+        <source>name.role_wiki_space_delete</source>
+        <target>Delete Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="niUaqoN" name="name.role_wiki_page_edit">
+      <segment>
+        <source>name.role_wiki_page_edit</source>
+        <target>Edit Wiki Page</target>
+      </segment>
+    </unit>
+    <unit id="JxfTH7h" name="name.role_wiki_page_view">
+      <segment>
+        <source>name.role_wiki_page_view</source>
+        <target>View Wiki Page</target>
+      </segment>
+    </unit>
+    <unit id="7gexoaj" name="name.role_wiki_page_create">
+      <segment>
+        <source>name.role_wiki_page_create</source>
+        <target>Create Wiki Page</target>
+      </segment>
+    </unit>
+    <unit id="fsape4l" name="name.role_wiki_page_delete">
+      <segment>
+        <source>name.role_wiki_page_delete</source>
+        <target>Delete Wiki Page</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

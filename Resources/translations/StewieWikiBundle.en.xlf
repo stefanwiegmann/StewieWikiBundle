@@ -10,25 +10,25 @@
     <unit id="L1HBUvV" name="header.filter">
       <segment>
         <source>header.filter</source>
-        <target>header.filter</target>
+        <target>Filter</target>
       </segment>
     </unit>
     <unit id="Ho6Ydeo" name="header.space.list">
       <segment>
         <source>header.space.list</source>
-        <target>header.space.list</target>
+        <target>Your Spaces</target>
       </segment>
     </unit>
     <unit id="Vx7DBGW" name="label.space.create">
       <segment>
         <source>label.space.create</source>
-        <target>label.space.create</target>
+        <target>Create Space</target>
       </segment>
     </unit>
     <unit id="ysOvPSq" name="label.name">
       <segment>
         <source>label.name</source>
-        <target>label.name</target>
+        <target>Name</target>
       </segment>
     </unit>
     <unit id="sIs8MuV" name="label.pages">
@@ -40,31 +40,79 @@
     <unit id="hzhzbqw" name="label.status">
       <segment>
         <source>label.status</source>
-        <target>label.status</target>
+        <target>Status</target>
       </segment>
     </unit>
     <unit id="zldXQq6" name="label.actions">
       <segment>
         <source>label.actions</source>
-        <target>label.actions</target>
+        <target>Actions</target>
       </segment>
     </unit>
     <unit id="cLu0gUR" name="tooltip.view">
       <segment>
         <source>tooltip.view</source>
-        <target>tooltip.view</target>
+        <target>View</target>
       </segment>
     </unit>
     <unit id="nbcWSI3" name="tooltip.edit">
       <segment>
         <source>tooltip.edit</source>
-        <target>tooltip.edit</target>
+        <target>Edit</target>
       </segment>
     </unit>
     <unit id="qWc975i" name="tooltip.delete">
       <segment>
         <source>tooltip.delete</source>
-        <target>tooltip.delete</target>
+        <target>Delete</target>
+      </segment>
+    </unit>
+    <unit id="jtgzEn." name="role.name.role_wiki_space_edit">
+      <segment>
+        <source>role.name.role_wiki_space_edit</source>
+        <target>Edit Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="5hKcEnc" name="role.name.role_wiki_space_view">
+      <segment>
+        <source>role.name.role_wiki_space_view</source>
+        <target>View Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="RrmrUZk" name="role.name.role_wiki_space_create">
+      <segment>
+        <source>role.name.role_wiki_space_create</source>
+        <target>Create Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="kqi9Z0O" name="role.name.role_wiki_space_delete">
+      <segment>
+        <source>role.name.role_wiki_space_delete</source>
+        <target>Delete Wiki Space</target>
+      </segment>
+    </unit>
+    <unit id="5egFOMd" name="role.name.role_wiki_page_edit">
+      <segment>
+        <source>role.name.role_wiki_page_edit</source>
+        <target>Edit Wiki Page</target>
+      </segment>
+    </unit>
+    <unit id="gAK7Xp7" name="role.name.role_wiki_page_view">
+      <segment>
+        <source>role.name.role_wiki_page_view</source>
+        <target>View Wiki Page</target>
+      </segment>
+    </unit>
+    <unit id="ODrJAtb" name="role.name.role_wiki_page_create">
+      <segment>
+        <source>role.name.role_wiki_page_create</source>
+        <target>Create Wiki Page</target>
+      </segment>
+    </unit>
+    <unit id="VLYg3av" name="role.name.role_wiki_page_delete">
+      <segment>
+        <source>role.name.role_wiki_page_delete</source>
+        <target>Delete Wiki Page</target>
       </segment>
     </unit>
   </file>
