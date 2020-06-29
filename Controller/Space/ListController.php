@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
-  * @IsGranted("ROLE_USER_GROUP_VIEW")
+  * @IsGranted("ROLE_WIKI_SPACE_VIEW")
   */
 
 class ListController extends AbstractController

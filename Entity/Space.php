@@ -62,15 +62,15 @@ class Space
     private $updated;
 
     /**
-     * @ORM\OneToMany(targetEntity="Stewie\WikiBundle\Entity\Article", mappedBy="space")
+     * @ORM\OneToMany(targetEntity="Stewie\WikiBundle\Entity\Page", mappedBy="space")
      */
-    private $article;
+    private $page;
 
     public function __construct()
     {
         // $this->roles = new ArrayCollection();
 
-        $this->article = new ArrayCollection();
+        $this->page = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -139,30 +139,30 @@ class Space
     }
 
     /**
-     * @return Collection|Article[]
+     * @return Collection|Page[]
      */
-    public function getArticle(): Collection
+    public function getPage(): Collection
     {
-        return $this->article;
+        return $this->page;
     }
 
-    public function addArticle(Article $article): self
+    public function addPage(Page $page): self
     {
-        if (!$this->article->contains($article)) {
-            $this->article[] = $article;
-            $article->setSpace($this);
+        if (!$this->page->contains($page)) {
+            $this->page[] = $page;
+            $page->setSpace($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Article $article): self
+    public function removePage(Page $page): self
     {
-        if ($this->article->contains($article)) {
-            $this->article->removeElement($article);
+        if ($this->page->contains($page)) {
+            $this->page->removeElement($page);
             // set the owning side to null (unless already changed)
-            if ($article->getSpace() === $this) {
-                $article->setSpace(null);
+            if ($page->getSpace() === $this) {
+                $page->setSpace(null);
             }
         }
 

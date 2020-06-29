@@ -21,7 +21,7 @@ class FillDataCommand extends Command
 
             // the full command description shown when running the command with
             // the "--help" option
-            ->setHelp('This command allows you to create articles')
+            ->setHelp('This command allows you to create wiki data')
 
             // add all or only static groups
             ->addOption('all')
@@ -32,7 +32,8 @@ class FillDataCommand extends Command
     {
         $commands = array();
         array_push($commands, 'stewie:wiki:fill-spaces');
-        array_push($commands, 'stewie:wiki:fill-articles');
+        array_push($commands, 'stewie:wiki:fill-pages');
+        array_push($commands, 'stewie:wiki:fill-roles');
 
         if($input->getOption('all')){
 

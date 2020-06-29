@@ -2,56 +2,48 @@
     "ROLE_WIKI_SPACE_EDIT": {
         "name": "ROLE_WIKI_SPACE_EDIT",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can edit a wiki space.",
         "sort": 3001
       },
     "ROLE_WIKI_SPACE_VIEW": {
         "name": "ROLE_WIKI_SPACE_VIEW",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can view a wiki space.",
         "sort": 3002
       },
     "ROLE_WIKI_SPACE_CREATE": {
         "name": "ROLE_WIKI_SPACE_CREATE",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can create a wiki space.",
         "sort": 3003
       },
     "ROLE_WIKI_SPACE_DELETE": {
         "name": "ROLE_WIKI_SPACE_DELETE",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can delete a wiki space.",
         "sort": 3004
       },
     "ROLE_WIKI_PAGE_EDIT": {
         "name": "ROLE_WIKI_PAGE_EDIT",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can edit a wiki page.",
         "sort": 3011
       },
     "ROLE_WIKI_PAGE_VIEW": {
         "name": "ROLE_WIKI_PAGE_VIEW",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can view a wiki page.",
         "sort": 3012
       },
     "ROLE_WIKI_PAGE_CREATE": {
         "name": "ROLE_WIKI_PAGE_CREATE",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can create a wiki page.",
         "sort": 3013
       },
     "ROLE_WIKI_PAGE_DELETE": {
         "name": "ROLE_WIKI_PAGE_DELETE",
         "bundle": "WikiBundle",
-        "translationDomain": "StewieWikiBundle",
         "description": "Can delete a wiki page.",
         "sort": 3014
       }

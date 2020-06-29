@@ -12,13 +12,13 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="Stewie\WikiBundle\Repository\ArticleRepository")
- * @ORM\Table(name="stewie_wiki_article")
+ * @ORM\Entity(repositoryClass="Stewie\WikiBundle\Repository\PageRepository")
+ * @ORM\Table(name="stewie_wiki_page")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\Loggable(logEntryClass="Stewie\WikiBundle\Entity\WikiLogEntry")
  * @Vich\Uploadable
  */
-class Article
+class Page
 {
     /**
      * @ORM\Id()
@@ -46,12 +46,12 @@ class Article
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="wiki_article")
+     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="wiki_page")
      */
-    private $author;
+    private $creator;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Stewie\WikiBundle\Entity\Space", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="Stewie\WikiBundle\Entity\Space", inversedBy="page")
      */
     private $space;
 
@@ -130,18 +130,6 @@ class Article
         return $this;
     }
 
-    public function getAuthor(): ?User
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?User $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
     public function getBody(): ?string
     {
         return $this->body;
@@ -162,6 +150,18 @@ class Article
     public function setSpace(?Space $space): self
     {
         $this->space = $space;
+
+        return $this;
+    }
+
+    public function getCreator(): ?User
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(?User $creator): self
+    {
+        $this->creator = $creator;
 
         return $this;
     }

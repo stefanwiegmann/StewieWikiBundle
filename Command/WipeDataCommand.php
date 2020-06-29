@@ -35,7 +35,7 @@ class WipeDataCommand extends Command
 
             // the full command description shown when running the command with
             // the "--help" option
-            ->setHelp('This command allows you to wipe articles')
+            ->setHelp('This command allows you to wipe wiki data')
 
             // add all or only static groups
             ->addOption('all')
@@ -62,9 +62,9 @@ class WipeDataCommand extends Command
         $progressBar->finish();
         $output->writeln('');
 
-        // wipe articles
+        // wipe pages
         $output->writeln('Wiping articles:');
-        $repo = $this->em->getRepository('StewieWikiBundle:Article');
+        $repo = $this->em->getRepository('StewieWikiBundle:Page');
         $objects = $repo->findAll();
 
         $progressBar = new ProgressBar($output, count($objects));
