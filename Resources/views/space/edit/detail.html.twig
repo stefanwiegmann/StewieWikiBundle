@@ -1,0 +1,81 @@
+{% extends '@StewieWiki/default/layout.html.twig' %}
+{% trans_default_domain 'StewieWikiBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.space.edit'|trans }}</small> {{ space.name }}{% endblock pageTitle %}
+{% block pageMenu %}
+{{ form_start(form) }}
+    {{ form_widget(form.submit) }}
+    {% if is_granted('ROLE_WIKI_SPACE_DELETE') %}
+      <a href="{{ path('stewie_wiki_space_delete', {'slug': space.slug}) }}" class="btn btn-danger" role="button">{{ 'label.space.delete'|trans }}</a>
+    {% endif %}
+{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{#{ path('stewie_wiki_space_edit_user', {'slug': space.slug}) }#}">{{ 'label.users'|trans }}  <span class="badge badge-primary">{#{space.users|length}#}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{#{ path('stewie_wiki_space_edit_group', {'slug': space.slug}) }#}">{{ 'label.groups'|trans }}  <span class="badge badge-primary">{#{space.groups|length}#}</a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual form -->
+
+    <div class="form-space row">
+      <div class="col-sm-2">
+        <strong>#</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ space.id }}
+      </div>
+    </div>
+
+    <div class="border-top my-3"></div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ form_label(form.name) }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+      </div>
+    </div>
+
+    <div class="border-top my-3"></div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ form_label(form.description) }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+      </div>
+    </div>
+
+    <div class="border-top my-3"></div>
+
+{{ form_end(form) }}
+{% endblock content %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      bsCustomFileInput.init()
+    })
+  </script>
+{% endblock javascripts %}

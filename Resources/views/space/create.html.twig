@@ -1,0 +1,35 @@
+{% extends '@StewieWiki/default/layout.html.twig' %}
+{% trans_default_domain 'StewieWikiBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.space.create'|trans }}</small> {% endblock pageTitle %}
+{% block pageMenu %}
+{{ form_start(form) }}
+    {{ form_widget(form.submit) }}
+{% endblock pageMenu %}
+
+{% block content %}
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ form_label(form.name) }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 col-form-label">
+        <strong>{{ form_label(form.description) }}</strong>
+      </div>
+      <div class="col-sm-10">
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+      </div>
+    </div>
+
+{{ form_end(form) }}
+{% endblock content %}

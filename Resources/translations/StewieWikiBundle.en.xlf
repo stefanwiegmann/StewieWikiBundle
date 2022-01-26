@@ -115,5 +115,83 @@
         <target>Delete Wiki Page</target>
       </segment>
     </unit>
+    <unit id="OM0gp4C" name="header.space.edit">
+      <segment>
+        <source>header.space.edit</source>
+        <target>Edit Space</target>
+      </segment>
+    </unit>
+    <unit id="VgRvTep" name="label.update">
+      <segment>
+        <source>label.update</source>
+        <target>Update</target>
+      </segment>
+    </unit>
+    <unit id="iWh0Hjs" name="label.space.delete">
+      <segment>
+        <source>label.space.delete</source>
+        <target>Delete Space</target>
+      </segment>
+    </unit>
+    <unit id="RTuLp7T" name="label.details">
+      <segment>
+        <source>label.details</source>
+        <target>Details</target>
+      </segment>
+    </unit>
+    <unit id="jI3fm2M" name="label.users">
+      <segment>
+        <source>label.users</source>
+        <target>User(s)</target>
+      </segment>
+    </unit>
+    <unit id="mF8paCb" name="label.groups">
+      <segment>
+        <source>label.groups</source>
+        <target>Group(s)</target>
+      </segment>
+    </unit>
+    <unit id="4cEApe1" name="label.description">
+      <segment>
+        <source>label.description</source>
+        <target>Description</target>
+      </segment>
+    </unit>
+    <unit id="FgmcK_W" name="title.space.delete">
+      <segment>
+        <source>title.space.delete</source>
+        <target>Delete space "%subject%"?</target>
+      </segment>
+    </unit>
+    <unit id="w0qamlC" name="text.space.delete">
+      <segment>
+        <source>text.space.delete</source>
+        <target>Deleting this space will also remove all pages in that space!</target>
+      </segment>
+    </unit>
+    <unit id="8yeGT7d" name="label.cancel">
+      <segment>
+        <source>label.cancel</source>
+        <target>Cancel</target>
+      </segment>
+    </unit>
+    <unit id="BiPY0TX" name="label.delete">
+      <segment>
+        <source>label.delete</source>
+        <target>Delete</target>
+      </segment>
+    </unit>
+    <unit id="iiyl1r8" name="header.space.create">
+      <segment>
+        <source>header.space.create</source>
+        <target>Create Space</target>
+      </segment>
+    </unit>
+    <unit id="rnNsHUa" name="label.create">
+      <segment>
+        <source>label.create</source>
+        <target>Create</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

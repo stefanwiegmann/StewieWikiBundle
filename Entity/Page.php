@@ -46,7 +46,7 @@ class Page
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User", inversedBy="wiki_page")
+     * @ORM\ManyToOne(targetEntity="Stewie\UserBundle\Entity\User")
      */
     private $creator;
 

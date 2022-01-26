@@ -12,8 +12,8 @@
 {% block pageTitle %}{{ 'header.space.list'|trans }}{% endblock pageTitle %}
 
 {% block pageMenu %}
-    {% if is_granted('ROLE_USER_GROUP_CREATE') %}
-        <a href="{{ path('stewie_user_group_create') }}" class="btn btn-primary" role="button">{{ 'label.space.create'|trans }}</a>
+    {% if is_granted('ROLE_WIKI_SPACE_CREATE') %}
+        <a href="{{ path('stewie_wiki_space_create') }}" class="btn btn-primary" role="button">{{ 'label.space.create'|trans }}</a>
     {% endif %}
 {% endblock pageMenu %}
 
@@ -40,10 +40,10 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_user_group_view_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
-                    {% if is_granted('ROLE_USER_GROUP_EDIT') %}
-                        <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_user_group_edit_detail', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
-                        <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('stewie_user_group_delete', {'slug': item.slug}) }}"><i class="fas fa-trash"></i></a>
+                    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_wiki_space_edit_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+                    {% if is_granted('ROLE_WIKI_SPACE_EDIT') %}
+                        <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_wiki_space_edit_detail', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
+                        <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('stewie_wiki_space_delete', {'slug': item.slug}) }}"><i class="fas fa-trash"></i></a>
                     {% endif %}
                 </td>
             </tr>
