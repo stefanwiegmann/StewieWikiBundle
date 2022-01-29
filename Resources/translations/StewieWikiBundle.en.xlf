@@ -193,5 +193,59 @@
         <target>Create</target>
       </segment>
     </unit>
+    <unit id="LDhDPrF" name="label.username">
+      <segment>
+        <source>label.username</source>
+        <target>Username</target>
+      </segment>
+    </unit>
+    <unit id="CUHo1Mc" name="label.realName">
+      <segment>
+        <source>label.realName</source>
+        <target>Real Name</target>
+      </segment>
+    </unit>
+    <unit id="D2N6_cP" name="label.email">
+      <segment>
+        <source>label.email</source>
+        <target>E-Mail</target>
+      </segment>
+    </unit>
+    <unit id="nWMH_Nr" name="label.avatar">
+      <segment>
+        <source>label.avatar</source>
+        <target>Avatar</target>
+      </segment>
+    </unit>
+    <unit id="q6jBep." name="tooltip.remove">
+      <segment>
+        <source>tooltip.remove</source>
+        <target>Remove</target>
+      </segment>
+    </unit>
+    <unit id=".otGRSA" name="text.space.remove.user">
+      <segment>
+        <source>text.space.remove.user</source>
+        <target>Please confirm removal of "%subject%" from space "%object%"!</target>
+      </segment>
+    </unit>
+    <unit id="9MN8zM_" name="header.space.remove.user">
+      <segment>
+        <source>header.space.remove.user</source>
+        <target>Remove user from space</target>
+      </segment>
+    </unit>
+    <unit id="kL5zriA" name="header.card.danger">
+      <segment>
+        <source>header.card.danger</source>
+        <target>Danger</target>
+      </segment>
+    </unit>
+    <unit id="Dhmyjrp" name="label.remove">
+      <segment>
+        <source>label.remove</source>
+        <target>Remove</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
