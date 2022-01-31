@@ -54,13 +54,12 @@ class RemoveController extends AbstractController
         return $this->redirectToRoute('stewie_wiki_space_edit_user', array('slug' => $slug));
       }
 
-    return $this->render('@StewieWiki/card/dangerForm.html.twig', [
+    return $this->render('@StewieUser/card/dangerForm.html.twig', [
         'text' => $translator->trans('text.space.remove.user', [
           '%subject%' => $userObject->getUsername(),
           '%object%' => $spaceObject->getName()
           ], 'StewieWikiBundle'),
-        'title' => $spaceObject->getName(),
-        'mutedTitle' => $translator->trans('header.space.remove.user', [], 'StewieWikiBundle'),
+        'title' => $translator->trans('header.space.remove.user', [], 'StewieWikiBundle'),
         'form' => $form->createView(),
     ]);
 

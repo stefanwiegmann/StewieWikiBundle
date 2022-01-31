@@ -39,26 +39,10 @@ class DeleteController extends AbstractController
                 'attr'=> array('class'=>'btn-danger'),
             ))
 
-            ->add('cancel', SubmitType::class, array(
-                'label' => 'label.cancel',
-                'translation_domain' => 'StewieWikiBundle',
-                'attr'=> array('class'=>'btn-secondary'),
-            ))
-
             ->getForm();
 
     // handle form
     $form->handleRequest($request);
-
-    if ($form->get('cancel')->isClicked()) {
-
-        $this->addFlash(
-            'info',
-            'Space removal was canceled!'
-            );
-
-        return $this->redirectToRoute('stewie_wiki_space_list');
-    }
 
     if ($form->isSubmitted() && $form->isValid()) {
         $space = $form->getData();
@@ -75,7 +59,7 @@ class DeleteController extends AbstractController
         return $this->redirectToRoute('stewie_wiki_space_list');
       }
 
-    return $this->render('@StewieWiki/default/confirm.html.twig', [
+    return $this->render('@StewieUser/card/dangerForm.html.twig', [
         'title' => $translator->trans('title.space.delete', [
           '%subject%' => $space->getName()
           ], 'StewieWikiBundle'),
