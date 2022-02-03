@@ -17,7 +17,7 @@ use Stewie\WikiBundle\Form\Type\Space\RoleType;
 class RoleController extends AbstractController
 {
     /**
-    * @Route("/user/group/edit/role/{slug}", name="stewie_user_group_edit_role")
+    * @Route("/user/group/edit/role/{slug}", name="stewie_wiki_space_edit_role")
     */
     public function details($slug, Request $request)
     {
