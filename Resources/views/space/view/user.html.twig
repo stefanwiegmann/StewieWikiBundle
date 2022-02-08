@@ -3,25 +3,21 @@
 
 {% block filterBlock %}{% endblock filterBlock %}
 
-{% block pageTitle %}<small class="text-muted">{{ 'header.space.edit'|trans }}</small> {{ space.name }}{% endblock pageTitle %}
-{% block pageMenu %}
-
-    {% embed '@StewieUser/user/form/addUser.html.twig' %}{% endembed %}
-
-{% endblock pageMenu %}
+{% block pageTitle %}<small class="text-muted">{{ 'header.space.view'|trans }}</small> {{ space.name }}{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
 
 {% block content %}
 
 <!-- tab bar -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('stewie_wiki_space_edit_detail', {'slug': space.slug}) }}">{{ 'label.details'|trans }}</a>
+        <a class="nav-link" href="{{ path('stewie_wiki_space_view_detail', {'slug': space.slug}) }}">{{ 'label.details'|trans }}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link active" href="#">{{ 'label.users'|trans }} <span class="badge badge-primary">{{space.user|length}}</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('stewie_wiki_space_edit_group', {'slug': space.slug}) }}">{{ 'label.groups'|trans }} <span class="badge badge-primary">{{space.group|length}}</a>
+        <a class="nav-link" href="{{ path('stewie_wiki_space_view_group', {'slug': space.slug}) }}">{{ 'label.groups'|trans }} <span class="badge badge-primary">{{space.group|length}}</a>
       </li>
     </ul>
 
@@ -40,7 +36,6 @@
   <th>{{ knp_pagination_sortable(userList, 'label.email'|trans, 'u.email') }}
     {% if userList.isSorted('u.email') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
-  <th>{{ 'label.actions'|trans }}</th>
 </tr> </thead>
 {% for item in userList %}
 <tr>
@@ -52,11 +47,6 @@
   <td>{{ item.username }}</td>
   <td>{{ item.firstName }} {{ item.lastName }}</td>
   <td>{{ item.email }}</td>
-  <td>
-    {% if is_granted('ROLE_USER_GROUP_EDIT') %}
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.remove'|trans }}" href="{{ path('stewie_wiki_space_remove_user', {'slug': space.slug, 'user': item.id}) }}"><i class="fas fa-trash"></i></a>
-    {% endif %}
-  </td>
 </tr>
 {% endfor %}
 </table>
@@ -64,10 +54,3 @@
       {{ knp_pagination_render(userList) }}
 
 {% endblock content %}
-
-{% block javascripts %}
-
-    {{ parent() }}
-    {% embed '@StewieUser/user/utils/userAutoComplete.html.twig' %}{% endembed %}
-
-{% endblock javascripts %}

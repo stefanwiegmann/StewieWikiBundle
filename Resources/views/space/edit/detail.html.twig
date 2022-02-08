@@ -23,7 +23,7 @@
         <a class="nav-link" href="{{ path('stewie_wiki_space_edit_user', {'slug': space.slug}) }}">{{ 'label.users'|trans }}  <span class="badge badge-primary">{{space.user|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{#{ path('stewie_wiki_space_edit_group', {'slug': space.slug}) }#}">{{ 'label.groups'|trans }}  <span class="badge badge-primary">{#{space.groups|length}#}</a>
+        <a class="nav-link" href="{{ path('stewie_wiki_space_edit_group', {'slug': space.slug}) }}">{{ 'label.groups'|trans }}  <span class="badge badge-primary">{{space.group|length}}</a>
       </li>
     </ul>
 

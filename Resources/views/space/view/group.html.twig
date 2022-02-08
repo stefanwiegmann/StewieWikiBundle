@@ -1,0 +1,48 @@
+{% extends '@StewieWiki/default/layout.html.twig' %}
+{% trans_default_domain 'StewieWikiBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.space.view'|trans }}</small> {{ space.name }}{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('stewie_wiki_space_view_detail', {'slug': space.slug}) }}">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('stewie_wiki_space_view_user', {'slug': space.slug}) }}">{{ 'label.users'|trans }} <span class="badge badge-primary">{{space.user|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.groups'|trans }} <span class="badge badge-primary">{{space.group|length}}</span></a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual table -->
+
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(groupList, '#', 'g.id') }}</th>
+  <th>{{ knp_pagination_sortable(groupList, 'label.name'|trans, 'g.name') }}
+    {% if groupList.isSorted('g.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+</tr> </thead>
+{% for item in groupList %}
+<tr>
+  <td>{{ item.id }}
+    {% if vich_uploader_asset(item, 'avatarFile') %}
+      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('stewie_user_thumb_filter') }}" alt="{{ 'label.avatar'|trans }}" />
+    {% endif %}
+  </td>
+  <td>{{ item.name }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {{ knp_pagination_render(groupList) }}
+
+{% endblock content %}

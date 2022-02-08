@@ -49,5 +49,53 @@
         <target>Delete Wiki Page</target>
       </segment>
     </unit>
+    <unit id="U0T_1Yh" name="name.role_wiki_space_edit_inherited">
+      <segment>
+        <source>name.role_wiki_space_edit_inherited</source>
+        <target>Edit Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="mJrQdyD" name="name.role_wiki_space_view_inherited">
+      <segment>
+        <source>name.role_wiki_space_view_inherited</source>
+        <target>View Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="Ky5QsZy" name="name.role_wiki_space_create_inherited">
+      <segment>
+        <source>name.role_wiki_space_create_inherited</source>
+        <target>Create Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="sj7uOYl" name="name.role_wiki_space_delete_inherited">
+      <segment>
+        <source>name.role_wiki_space_delete_inherited</source>
+        <target>Delete Wiki Space (*)</target>
+      </segment>
+    </unit>
+    <unit id="gXYDk25" name="name.role_wiki_page_edit_inherited">
+      <segment>
+        <source>name.role_wiki_page_edit_inherited</source>
+        <target>Edit Wiki Page (*)</target>
+      </segment>
+    </unit>
+    <unit id="iMWavuC" name="name.role_wiki_page_view_inherited">
+      <segment>
+        <source>name.role_wiki_page_view_inherited</source>
+        <target>View Wiki Page (*)</target>
+      </segment>
+    </unit>
+    <unit id="AiZyox5" name="name.role_wiki_page_create_inherited">
+      <segment>
+        <source>name.role_wiki_page_create_inherited</source>
+        <target>Create Wiki Page (*)</target>
+      </segment>
+    </unit>
+    <unit id="EZQ_GPj" name="name.role_wiki_page_delete_inherited">
+      <segment>
+        <source>name.role_wiki_page_delete_inherited</source>
+        <target>Delete Wiki Page (*)</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

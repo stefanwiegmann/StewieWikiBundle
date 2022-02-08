@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
+use Stewie\UserBundle\Form\Type\User\AddUserType;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_EDIT")
@@ -34,6 +35,30 @@ class UserController extends AbstractController
       $repo = $em->getRepository('StewieWikiBundle:Space');
       $space = $repo->findOneBySlug($slug);
 
+      // create form
+      $form = $this->createForm(AddUserType::class);
+
+      // handle form
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+          $userRepo = $em->getRepository('StewieUserBundle:User');
+          $user = $userRepo->findOneById($form->get('userAutoId')->getData());
+
+          // add user
+          $space->addUser($user);
+          $em->persist($space);
+          $em->flush();
+
+          $this->addFlash(
+              'success',
+              'User was added!'
+              );
+
+          return $this->redirectToRoute('stewie_wiki_space_edit_user', array('slug' => $slug));
+        }
+
       //get data and paginate
       $pagination = $this->paginator->paginate(
             // $this->getQuery($space), /* query NOT result */
@@ -48,6 +73,7 @@ class UserController extends AbstractController
           'space' => $space,
           'userList' => $pagination,
           'page' => $page,
+          'form' => $form->createView(),
       ]);
     }
 

@@ -40,7 +40,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_wiki_space_edit_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+                    <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_wiki_space_view_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
                     {% if is_granted('ROLE_WIKI_SPACE_EDIT') %}
                         <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_wiki_space_edit_detail', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
                         <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('stewie_wiki_space_delete', {'slug': item.slug}) }}"><i class="fas fa-trash"></i></a>

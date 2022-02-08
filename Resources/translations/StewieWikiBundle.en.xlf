@@ -247,5 +247,23 @@
         <target>Remove</target>
       </segment>
     </unit>
+    <unit id="5h8Bgav" name="header.space.view">
+      <segment>
+        <source>header.space.view</source>
+        <target>View Space</target>
+      </segment>
+    </unit>
+    <unit id="hLEKOfv" name="label.user_s">
+      <segment>
+        <source>label.user_s</source>
+        <target>Users</target>
+      </segment>
+    </unit>
+    <unit id="T9z.aEU" name="label.group_s">
+      <segment>
+        <source>label.group_s</source>
+        <target>Groups</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
