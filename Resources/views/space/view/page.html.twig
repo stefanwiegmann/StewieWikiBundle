@@ -17,10 +17,10 @@
         <a class="nav-link" href="{{ path('stewie_wiki_space_view_user', {'slug': space.slug}) }}">{{ 'label.users'|trans }} <span class="badge badge-primary">{{space.user|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">{{ 'label.groups'|trans }} <span class="badge badge-primary">{{space.group|length}}</span></a>
+        <a class="nav-link" href="{{ path('stewie_wiki_space_view_group', {'slug': space.slug}) }}">{{ 'label.group_s'|trans }}  <span class="badge badge-primary">{{space.group|length}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('stewie_wiki_space_view_page', {'slug': space.slug}) }}">{{ 'label.page_s'|trans }}  <span class="badge badge-primary">{{space.page|length}}</a>
+        <a class="nav-link active" href="#">{{ 'label.pages'|trans }} <span class="badge badge-primary">{{space.page|length}}</span></a>
       </li>
     </ul>
 
@@ -29,23 +29,19 @@
 
 <table class="table table-striped">
 <thead> <tr>
-  <th>{{ knp_pagination_sortable(groupList, '#', 'g.id') }}</th>
-  <th>{{ knp_pagination_sortable(groupList, 'label.name'|trans, 'g.name') }}
-    {% if groupList.isSorted('g.name') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  <th>{{ knp_pagination_sortable(pageList, '#', 'p.id') }}</th>
+  <th>{{ knp_pagination_sortable(pageList, 'label.title'|trans, 'p.title') }}
+    {% if pageList.isSorted('p.title') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
 </tr> </thead>
-{% for item in groupList %}
+{% for item in pageList %}
 <tr>
-  <td>{{ item.id }}
-    {% if vich_uploader_asset(item, 'avatarFile') %}
-      <img src="{{ vich_uploader_asset(item, 'avatarFile') | imagine_filter('stewie_user_thumb_filter') }}" alt="{{ 'label.avatar'|trans }}" />
-    {% endif %}
-  </td>
-  <td>{{ item.name }}</td>
+  <td>{{ item.id }}</td>
+  <td>{{ item.title }}</td>
 </tr>
 {% endfor %}
 </table>
 {# display navigation #}
-      {{ knp_pagination_render(groupList) }}
+      {{ knp_pagination_render(pageList) }}
 
 {% endblock content %}

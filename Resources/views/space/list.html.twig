@@ -37,7 +37,7 @@
             <tr>
                 <td>{{ item.id }}</td>
                 <td>{{ item.name }}</td>
-                <td></td>
+                <td>{{ item.page|length }} {{ 'label.page_s'|trans }}</td>
                 <td></td>
                 <td>
                     <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_wiki_space_view_detail', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>

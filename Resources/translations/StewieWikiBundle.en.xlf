@@ -265,5 +265,17 @@
         <target>Groups</target>
       </segment>
     </unit>
+    <unit id="9YH_F9L" name="label.page_s">
+      <segment>
+        <source>label.page_s</source>
+        <target>Pages</target>
+      </segment>
+    </unit>
+    <unit id="UrRn8xj" name="label.title">
+      <segment>
+        <source>label.title</source>
+        <target>Title</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

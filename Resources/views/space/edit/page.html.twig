@@ -1,0 +1,47 @@
+{% extends '@StewieWiki/default/layout.html.twig' %}
+{% trans_default_domain 'StewieWikiBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ 'header.space.edit'|trans }}</small> {{ space.name }}{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('stewie_wiki_space_edit_detail', {'slug': space.slug}) }}">{{ 'label.details'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('stewie_wiki_space_edit_user', {'slug': space.slug}) }}">{{ 'label.users'|trans }} <span class="badge badge-primary">{{space.user|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('stewie_wiki_space_edit_group', {'slug': space.slug}) }}">{{ 'label.group_s'|trans }}  <span class="badge badge-primary">{{space.group|length}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.pages'|trans }} <span class="badge badge-primary">{{space.page|length}}</span></a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual table -->
+
+<table class="table table-striped">
+<thead> <tr>
+  <th>{{ knp_pagination_sortable(pageList, '#', 'p.id') }}</th>
+  <th>{{ knp_pagination_sortable(pageList, 'label.title'|trans, 'p.title') }}
+    {% if pageList.isSorted('p.title') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
+  </th>
+</tr> </thead>
+{% for item in pageList %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.title }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+      {{ knp_pagination_render(pageList) }}
+
+{% endblock content %}

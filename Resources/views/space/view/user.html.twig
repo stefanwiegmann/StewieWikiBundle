@@ -19,6 +19,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ path('stewie_wiki_space_view_group', {'slug': space.slug}) }}">{{ 'label.groups'|trans }} <span class="badge badge-primary">{{space.group|length}}</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('stewie_wiki_space_view_page', {'slug': space.slug}) }}">{{ 'label.page_s'|trans }}  <span class="badge badge-primary">{{space.page|length}}</a>
+      </li>
     </ul>
 
 <br>
