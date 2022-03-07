@@ -37,7 +37,7 @@
 {% for item in pageList %}
 <tr>
   <td>{{ item.id }}</td>
-  <td>{{ item.title }}</td>
+  <td><a class="nav-link active" href="{{ path('stewie_wiki_page_view_page', {'slug': item.slug}) }}">{{ item.title }}</a></td>
 </tr>
 {% endfor %}
 </table>

@@ -277,5 +277,23 @@
         <target>Title</target>
       </segment>
     </unit>
+    <unit id="2Kk11S9" name="header.page.view">
+      <segment>
+        <source>header.page.view</source>
+        <target>View Page</target>
+      </segment>
+    </unit>
+    <unit id="6zc4XLJ" name="label.history">
+      <segment>
+        <source>label.history</source>
+        <target>History</target>
+      </segment>
+    </unit>
+    <unit id="19JxGrU" name="label.page">
+      <segment>
+        <source>label.page</source>
+        <target>Page</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

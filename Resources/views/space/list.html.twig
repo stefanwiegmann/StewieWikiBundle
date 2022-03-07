@@ -36,7 +36,7 @@
         {% for item in spaceList %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td>{{ item.name }}</td>
+                <td><a href="{{ path('stewie_wiki_page_view_root', {'slug': item.slug}) }}">{{ item.name }}</a></td>
                 <td>{{ item.page|length }} {{ 'label.page_s'|trans }}</td>
                 <td></td>
                 <td>

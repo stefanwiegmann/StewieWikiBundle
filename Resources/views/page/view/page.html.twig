@@ -1,0 +1,32 @@
+{% extends '@StewieWiki/page/layout.html.twig' %}
+{% trans_default_domain 'StewieWikiBundle' %}
+
+{% block filterBlock %}{% endblock filterBlock %}
+
+{% block pageTitle %}<small class="text-muted">{{ page.space.name }}</small><br>{{ page.title }}{% endblock pageTitle %}
+{% block pageMenu %}
+{% endblock pageMenu %}
+
+{% block content %}
+
+<!-- tab bar -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">{{ 'label.page'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('stewie_wiki_space_view_user', {'slug': page.slug}) }}">{{ 'label.history'|trans }}</a>
+      </li>
+    </ul>
+
+<br>
+<!-- actual page -->
+
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+            {{ page.body }}
+        </div>
+
+    </div>
+
+{% endblock content %}
