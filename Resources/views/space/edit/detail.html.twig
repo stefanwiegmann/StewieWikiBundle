@@ -7,6 +7,11 @@
 {% block pageMenu %}
 {{ form_start(form) }}
     {{ form_widget(form.submit) }}
+
+    {% if is_granted('ROLE_WIKI_PAGE_CREATE') %}
+        <a href="{{ path('stewie_wiki_page_create', {'slug': space.slug}) }}" class="btn btn-primary" role="button">{{ 'label.page.create'|trans }}</a>
+    {% endif %}
+
     {% if is_granted('ROLE_WIKI_SPACE_DELETE') %}
       <a href="{{ path('stewie_wiki_space_delete', {'slug': space.slug}) }}" class="btn btn-danger" role="button">{{ 'label.space.delete'|trans }}</a>
     {% endif %}
@@ -33,7 +38,7 @@
 <br>
 <!-- actual form -->
 
-    <div class="form-space row">
+    <div class="form-group row">
       <div class="col-sm-2">
         <strong>#</strong>
       </div>

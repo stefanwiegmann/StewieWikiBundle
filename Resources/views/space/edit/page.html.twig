@@ -33,11 +33,21 @@
   <th>{{ knp_pagination_sortable(pageList, 'label.title'|trans, 'p.title') }}
     {% if pageList.isSorted('p.title') %}<i class="fas fa-sort" aria-hidden="true"></i>{% endif %}
   </th>
+  <th>{{ 'label.status'|trans }}</th>
+  <th>{{ 'label.actions'|trans }}</th>
 </tr> </thead>
 {% for item in pageList %}
 <tr>
   <td>{{ item.id }}</td>
-  <td>{{ item.title }}</td>
+  <td><a class="nav-link active" href="{{ path('stewie_wiki_page_view_page', {'slug': item.slug}) }}">{{ item.title }}</a></td>
+  <td></td>
+  <td>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_wiki_page_view_page', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+      {% if is_granted('ROLE_WIKI_SPACE_EDIT') %}
+          <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_wiki_page_edit', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
+          <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('stewie_wiki_page_delete', {'slug': item.slug}) }}"><i class="fas fa-trash"></i></a>
+      {% endif %}
+  </td>
 </tr>
 {% endfor %}
 </table>

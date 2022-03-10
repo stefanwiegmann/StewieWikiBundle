@@ -295,5 +295,47 @@
         <target>Page</target>
       </segment>
     </unit>
+    <unit id="3xCxJpw" name="label.page.edit">
+      <segment>
+        <source>label.page.edit</source>
+        <target>Edit</target>
+      </segment>
+    </unit>
+    <unit id="KWwr.gS" name="label.body">
+      <segment>
+        <source>label.body</source>
+        <target>Body</target>
+      </segment>
+    </unit>
+    <unit id="f75UR1." name="title.page.delete">
+      <segment>
+        <source>title.page.delete</source>
+        <target>Delete page "%subject%"?</target>
+      </segment>
+    </unit>
+    <unit id="jO2s8bG" name="text.page.delete">
+      <segment>
+        <source>text.page.delete</source>
+        <target>Deleting this page will also remove all former versions of that page!</target>
+      </segment>
+    </unit>
+    <unit id="T7CjtJa" name="label.page.delete">
+      <segment>
+        <source>label.page.delete</source>
+        <target>Delete Page</target>
+      </segment>
+    </unit>
+    <unit id="hOZrO72" name="label.page.create">
+      <segment>
+        <source>label.page.create</source>
+        <target>Create Page</target>
+      </segment>
+    </unit>
+    <unit id="x9GU6BQ" name="header.page.create">
+      <segment>
+        <source>header.page.create</source>
+        <target>Create Page</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

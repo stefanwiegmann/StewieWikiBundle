@@ -5,6 +5,7 @@
 
 {% block pageTitle %}<small class="text-muted">{{ page.space.name }}</small><br>{{ page.title }}{% endblock pageTitle %}
 {% block pageMenu %}
+    <a href="{{ path('stewie_wiki_page_edit', {'slug': page.slug}) }}" class="btn btn-primary" role="button">{{ 'label.page.edit'|trans }}</a>
 {% endblock pageMenu %}
 
 {% block content %}
