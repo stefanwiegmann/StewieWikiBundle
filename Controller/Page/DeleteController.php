@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Stewie\WikiBundle\Entity\Page;
 
 /**
   * @IsGranted("ROLE_WIKI_PAGE_DELETE")
@@ -26,7 +27,7 @@ class DeleteController extends AbstractController
   {
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $repo = $em->getRepository('StewieWikiBundle:Page');
+    $repo = $em->getRepository(Page::Class);
     $page = $repo->findOneBySlug($slug);
 
     // create form

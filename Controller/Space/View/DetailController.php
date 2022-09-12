@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use Stewie\UserBundle\Form\Type\User\DetailType;
+use Stewie\WikiBundle\Entity\Space;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_VIEW")
@@ -23,7 +24,7 @@ class DetailController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Space');
+      $repo = $em->getRepository(Space::Class);
       $space = $repo->findOneBySlug($slug);
 
       return $this->render('@StewieWiki/space/view/detail.html.twig', [

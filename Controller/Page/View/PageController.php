@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use Stewie\UserBundle\Form\Type\User\DetailType;
+use Stewie\WikiBundle\Entity\Space;
+use Stewie\WikiBundle\Entity\Page;
 
 /**
   * @IsGranted("ROLE_WIKI_PAGE_VIEW")
@@ -23,7 +25,7 @@ class PageController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Space');
+      $repo = $em->getRepository(Space::Class);
       $space = $repo->findOneBySlug($slug);
 
       return $this->redirectToRoute('stewie_wiki_page_view_page', ['slug' => $space->getPage()->first()->getSlug()]);
@@ -37,7 +39,7 @@ class PageController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Page');
+      $repo = $em->getRepository(Page::Class);
       $page = $repo->findOneBySlug($slug);
 
       return $this->render('@StewieWiki/page/view/page.html.twig', [

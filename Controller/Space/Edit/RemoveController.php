@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Stewie\WikiBundle\Entity\Space;
+use Stewie\UserBundle\Entity\User;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_EDIT")
@@ -25,12 +27,12 @@ class RemoveController extends AbstractController
   {
     //get space
     $em = $this->container->get('doctrine')->getManager();
-    $spaceRepo = $em->getRepository('StewieWikiBundle:Space');
+    $spaceRepo = $em->getRepository(Space::Class);
     $spaceObject = $spaceRepo->findOneBySlug($slug);
 
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $userRepo = $em->getRepository('StewieUserBundle:User');
+    $userRepo = $em->getRepository(User::Class);
     $userObject = $userRepo->findOneById($user);
 
     // create form

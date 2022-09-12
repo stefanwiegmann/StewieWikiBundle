@@ -5,7 +5,7 @@ namespace Stewie\WikiBundle\Form\Type\Space;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-// use Stewie\UserBundle\Entity\Role;
+use Stewie\UserBundle\Entity\Group;
 use Doctrine\ORM\EntityRepository;
 // use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +19,7 @@ class GroupType extends AbstractType
     {
         $builder
             ->add('group', EntityType::class, array(
-                  'class' => 'StewieUserBundle:Group',
+                  'class' => Group::Class,
                   'query_builder' => function (EntityRepository $er) {
                       return $er->createQueryBuilder('g')
                           ->orderBy('g.name', 'ASC');

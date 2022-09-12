@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\WikiBundle\Form\Type\Page\CreateType;
 use Stewie\WikiBundle\Entity\Page;
+use Stewie\WikiBundle\Entity\Space;
 // use Stewie\WikiBundle\Service\AvatarGenerator;
 // use Symfony\Component\HttpFoundation\File\File;
 
@@ -26,7 +27,7 @@ class CreateController extends AbstractController
     {
       //get space
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Space');
+      $repo = $em->getRepository(Space::Class);
       $space = $repo->findOneBySlug($slug);
 
       //create page

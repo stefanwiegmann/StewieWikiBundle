@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\WikiBundle\Form\Type\Page\EditType;
 // use Stewie\WikiBundle\Service\AvatarGenerator;
 // use Symfony\Component\HttpFoundation\File\File;
+use Stewie\WikiBundle\Entity\Page;
 
 /**
   * @IsGranted("ROLE_WIKI_PAGE_EDIT")
@@ -25,7 +26,7 @@ class PageController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Page');
+      $repo = $em->getRepository(Page::Class);
       $page = $repo->findOneBySlug($slug);
 
       // create form

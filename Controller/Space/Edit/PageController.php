@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use Stewie\UserBundle\Form\Type\User\GroupType;
 use Knp\Component\Pager\PaginatorInterface;
+use Stewie\WikiBundle\Entity\Space;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_EDIT")
@@ -32,7 +33,7 @@ class PageController extends AbstractController
     {
       //get space
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Space');
+      $repo = $em->getRepository(Space::Class);
       $space = $repo->findOneBySlug($slug);
 
       //get data and paginate

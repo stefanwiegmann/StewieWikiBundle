@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
+use Stewie\WikiBundle\Entity\Space;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_VIEW")
@@ -26,12 +28,12 @@ class ListController extends AbstractController
     * @Route("/space/list/{page}", defaults={"page": 1}
     *     , requirements={"page": "\d+"}, name="stewie_wiki_space_list")
     */
-    public function list($page, Request $request)
+    public function list(ManagerRegistry $doctrine, $page, Request $request)
     {
       //get data and paginate
       // $paginator  = $this->get('knp_paginator');
       $pagination = $this->paginator->paginate(
-      $this->getQuery(), /* query NOT result */
+      $this->getQuery($doctrine), /* query NOT result */
       $request->query->getInt('page', $page)/*page number*/,
             // 10/*limit per page*/
             $this->getParameter('stewie_wiki.max_rows')/*limit per page*/
@@ -46,10 +48,9 @@ class ListController extends AbstractController
       ]);
     }
 
-    public function getQuery(){
+    public function getQuery($doctrine){
 
-        $repository = $this->getDoctrine()
-          ->getRepository('StewieWikiBundle:Space');
+        $repository = $doctrine->getRepository(Space::Class);
 
         $query = $repository->createQueryBuilder('s')
           ->orderBy('s.id', 'ASC');

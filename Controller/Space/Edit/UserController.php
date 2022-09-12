@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 use Stewie\UserBundle\Form\Type\User\AddUserType;
+use Stewie\WikiBundle\Entity\Space;
+use Stewie\UserBundle\Entity\User;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_EDIT")
@@ -32,7 +34,7 @@ class UserController extends AbstractController
     {
       //get space
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Space');
+      $repo = $em->getRepository(Space::Class);
       $space = $repo->findOneBySlug($slug);
 
       // create form
@@ -43,7 +45,7 @@ class UserController extends AbstractController
 
       if ($form->isSubmitted() && $form->isValid()) {
 
-          $userRepo = $em->getRepository('StewieUserBundle:User');
+          $userRepo = $em->getRepository(User::Class);
           $user = $userRepo->findOneById($form->get('userAutoId')->getData());
 
           // add user

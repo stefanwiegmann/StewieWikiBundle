@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 // use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Stewie\WikiBundle\Entity\Space;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_DELETE")
@@ -26,7 +27,7 @@ class DeleteController extends AbstractController
   {
     //get user
     $em = $this->container->get('doctrine')->getManager();
-    $repo = $em->getRepository('StewieWikiBundle:Space');
+    $repo = $em->getRepository(Space::Class);
     $space = $repo->findOneBySlug($slug);
 
     // create form

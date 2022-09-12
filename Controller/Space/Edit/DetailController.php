@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Stewie\WikiBundle\Form\Type\Space\DetailType;
 // use Stewie\WikiBundle\Service\AvatarGenerator;
 // use Symfony\Component\HttpFoundation\File\File;
+use Stewie\WikiBundle\Entity\Space;
 
 /**
   * @IsGranted("ROLE_WIKI_SPACE_EDIT")
@@ -25,7 +26,7 @@ class DetailController extends AbstractController
     {
       //get user
       $em = $this->container->get('doctrine')->getManager();
-      $repo = $em->getRepository('StewieWikiBundle:Space');
+      $repo = $em->getRepository(Space::Class);
       $space = $repo->findOneBySlug($slug);
 
       // create form
