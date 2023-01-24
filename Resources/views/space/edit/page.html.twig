@@ -42,10 +42,10 @@
   <td><a class="nav-link active" href="{{ path('stewie_wiki_page_view_page', {'slug': item.slug}) }}">{{ item.title }}</a></td>
   <td></td>
   <td>
-      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_wiki_page_view_page', {'slug': item.slug}) }}"><i class="far fa-eye"></i></a>
+      <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.view'|trans }}" href="{{ path('stewie_wiki_page_view_page', {'slug': item.slug}) }}"><i class="bi bi-eyeglasses"></i></a>
       {% if is_granted('ROLE_WIKI_SPACE_EDIT') %}
-          <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_wiki_page_edit', {'slug': item.slug}) }}"><i class="far fa-edit"></i></a>
-          <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('stewie_wiki_page_delete', {'slug': item.slug}) }}"><i class="fas fa-trash"></i></a>
+          <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.edit'|trans }}" href="{{ path('stewie_wiki_page_edit', {'slug': item.slug}) }}"><i class="bi bi-pencil-square"></i></a>
+          <a data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete'|trans }}" href="{{ path('stewie_wiki_page_delete', {'slug': item.slug}) }}"><i class="bi bi-trash3"></i></a>
       {% endif %}
   </td>
 </tr>
